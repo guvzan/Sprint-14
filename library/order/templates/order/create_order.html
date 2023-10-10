@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Order</title>
+</head>
+<body>
+    <h1>Create Order</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="book_id">Select a book:</label>
+        <select name="book_id" id="book_id">
+            {% for book in books %}
+                <option value="{{ book.id }}">{{ book.title }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="plated_end_at">Planned Return Date:</label>
+        <input type="date" name="plated_end_at" id="plated_end_at">
+        <br>
+        <input type="submit" value="Create Order">
+    </form>
+</body>
+</html>

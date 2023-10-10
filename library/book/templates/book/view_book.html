@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Book Details</h2>
+  <p><strong>ID:</strong> {{ book.id }}</p>
+  <p><strong>Name:</strong> {{ book.name }}</p>
+  <p><strong>Description:</strong> {{ book.description }}</p>
+  <p><strong>Count:</strong> {{ book.count }}</p>
+  <p><strong>Authors:</strong>
+    <ul>
+      {% for author in book.authors.all %}
+        <li>{{ author.name }}</li>
+      {% endfor %}
+    </ul>
+  </p>
+</div>
+
+</body>
+</html>

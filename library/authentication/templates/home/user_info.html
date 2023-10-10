@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div align="center">
+        {% if my_user %}
+        <p>FIRST NAME -- <b>{{ my_user.first_name }}</b></p>
+        <p>MIDDLE NAME -- <b>{{ my_user.middle_name }}</b></p>
+        <p>LAST NAME -- <b>{{ my_user.last_name }}</b></p>
+        <p>EMAIL -- <b>{{ my_user.email }}</b></p>
+        <p>CREATED AT -- <b>{{ my_user.created_at }}</b></p>
+        <p>
+            ROLE --
+            <b>
+                {% if my_user.role == 0 %}
+                    Visitor
+                {% elif my_user.role == 1 %}
+                    Librarian
+                {% else %}
+                    N/A
+                {% endif %}
+            </b>
+
+        </p>
+        {% endif %}
+        <a href="{% url 'authentication:homepage' %}">Homepage</a>
+    </div>
+
+
+
+</body>
+</html>

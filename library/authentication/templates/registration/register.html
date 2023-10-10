@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="{% url 'authentication:register' %}" method="post">
+    {% csrf_token %}
+    <table align="center">
+        <tr>
+            <td>
+                <label for="first_name">FIRST NAME</label>
+            </td>
+            <td>
+                <input type="text" name="first_name" required>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="middle_name">MIDDLE NAME</label>
+            </td>
+            <td>
+                <input type="text" name="middle_name" required>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="last_name">LAST NAME</label>
+            </td>
+            <td>
+                <input type="text" name="last_name" required>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="email">EMAIL</label>
+            </td>
+            <td>
+                <input type="email" name="email" required>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="role">РОЛЬ</label>
+            </td>
+            <td>
+                <select name="role">
+                    <option value="visitor">visitor</option>
+                    <option value="librarian">librarian</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="password">PASSWORD</label>
+            </td>
+            <td>
+                <input type="password" name="password" required>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <button name="submit">Реєстрація</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

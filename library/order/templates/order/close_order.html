@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Close Order</title>
+</head>
+<body>
+    <h1>Close Order</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="end_at">Actual Return Date:</label>
+        <input type="date" name="end_at" id="end_at">
+        <br>
+        <input type="submit" value="Close Order">
+    </form>
+</body>
+</html>

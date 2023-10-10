@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 align="center">List of all users</h1>
+<table align="center">
+    <tr>
+        <th>FIRST NAME</th>
+        <th>MIDDLE NAME</th>
+        <th>LAST NAME</th>
+        <th>EMAIL</th>
+        <th>ROLE</th>
+        <th>PROFILE</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.middle_name }}</td>
+        <td>{{ user.last_name }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+            {% if user.role == 0 %}
+                <td>Visitor</td>
+            {% elif user.role == 1 %}
+                <td>Librarian</td>
+            {% else %}
+                <td>N/A</td>
+            {% endif %}
+        </td>
+        <td><a href="{% url 'authentication:user_info' user.id %}">View</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<div align="center">
+    <a href="{% url 'authentication:homepage' %}">Homepage</a>
+</div>
+
+
+</body>
+</html>
