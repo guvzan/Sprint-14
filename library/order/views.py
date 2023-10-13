@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Order
+
 from book.models import Book
+from .forms import OrderForm
+from .models import Order
 
 def all_orders(request):
     orders = Order.objects.all()
@@ -14,16 +16,31 @@ def my_orders(request):
 
 
 def create_order(request):
-    if request.method == 'POST':
-        user = request.user
-        book_id = request.POST.get('book_id')
-        plated_end_at = request.POST.get('plated_end_at')
-        book = Book.objects.get(pk=book_id)
-        Order.create(user, book, plated_end_at)
-        return redirect('all_orders')
+    if request.method != 'POST':
+        form = OrderForm()
     else:
-        books = Book.objects.all()
-        return render(request, 'order/create_order.html', {'books': books})
+        form = OrderForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('order:all_orders')
+    context = {'form': form}
+    return render(request, 'order/create_order.html', context)
+
+
+def edit_order(request, order_id):
+    order = Order.objects.get(id=order_id)
+    if request.method != 'POST':
+        form = OrderForm(instance=order)
+    else:
+        form = OrderForm(instance=order, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('order:all_orders')
+    context = {
+        'form': form,
+        'order': order,
+    }
+    return render(request, 'order/edit_order.html', context)
 
 
 def close_order(request, order_id):

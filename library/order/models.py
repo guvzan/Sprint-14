@@ -24,7 +24,7 @@ class Order(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     end_at = models.DateTimeField(default=None, null=True, blank=True)
-    plated_end_at = models.DateTimeField(default=None)
+    plated_end_at = models.DateTimeField(default=None, null=True)
 
     def __str__(self):
         """

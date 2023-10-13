@@ -4,20 +4,16 @@
     <title>Create Order</title>
 </head>
 <body>
-    <h1>Create Order</h1>
-    <form method="post">
+
+<div align="center">
+    <h2>Create an Order</h2>
+    <form method="post" action="{% url 'order:create_order' %}">
         {% csrf_token %}
-        <label for="book_id">Select a book:</label>
-        <select name="book_id" id="book_id">
-            {% for book in books %}
-                <option value="{{ book.id }}">{{ book.title }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <label for="plated_end_at">Planned Return Date:</label>
-        <input type="date" name="plated_end_at" id="plated_end_at">
-        <br>
-        <input type="submit" value="Create Order">
+        {{ form.as_p }}
+
+        <button type="submit">Add Order</button>
     </form>
+</div>
+
 </body>
 </html>

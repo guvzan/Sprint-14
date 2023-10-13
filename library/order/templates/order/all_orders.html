@@ -4,11 +4,17 @@
     <title>All Orders</title>
 </head>
 <body>
+
+<div align="center">
     <h1>All Orders</h1>
-    <ul>
         {% for order in orders %}
-            <li>{{ order }}</li>
+            <p>
+                {{ order.id }} -- {{ order.user.email }} -- {{ order.book.name }} -- {{ order.created_at }}
+                -- {{ order.user.name }} -- {{ order.end_at }} -- <a href="{% url 'order:edit_order' order.id %}">Редагувати</a>
+            </p>
         {% endfor %}
-    </ul>
+    <a href="{% url 'order:create_order' %}">Додати замовлення</a>
+</div>
+
 </body>
 </html>
