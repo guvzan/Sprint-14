@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit Book {{ book.id }}</title>
 </head>
 <body>
 
@@ -12,7 +12,7 @@
         {% csrf_token %}
         {{ form.as_p }}
 
-        <button type="submit">Add Book</button>
+        <button type="submit">Edit Book</button>
     </form>
 </div>
 
