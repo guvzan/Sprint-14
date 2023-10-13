@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div align="center">
+    {% for book in books %}
+        <p>
+            {{ book.id }} -- {{ book.name }} -- {{ book.description }} --
+            <a href="{% url 'book:edit_book' book.id %}">Редагувати</a>
+        </p>
+    {% endfor %}
+    <a href="{% url 'book:add_book' %}">Додати книгу</a>
+</div>
+
+</body>
+</html>

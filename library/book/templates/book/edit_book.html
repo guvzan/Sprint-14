@@ -7,8 +7,8 @@
 <body>
 
 <div align="center">
-    <h2>Add a Book</h2>
-    <form method="post" action="{% url 'book:add_book' %}">
+    <h2>Edit Book</h2>
+    <form method="post" action="{% url 'book:edit_book' book.id %}">
         {% csrf_token %}
         {{ form.as_p }}
 
